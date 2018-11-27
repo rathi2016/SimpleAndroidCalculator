@@ -47,7 +47,12 @@ public class MainActivity extends AppCompatActivity {
      * onClick method called when Div button is clicked
      */
     public void onDiv(View view) {
-        compute(Calculator.Operator.DIV);
+        try {
+            compute(Calculator.Operator.DIV);
+        } catch (IllegalArgumentException iae) {
+            Log.e(LOG_TAG, "IllegalArgumentException", iae);
+            mResultTextView.setText(getString(R.string.computationError));
+        }
     }
 
     /**
